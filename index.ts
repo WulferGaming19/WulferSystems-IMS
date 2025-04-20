@@ -8,6 +8,8 @@ dotenv.config();
 // Datenbank Pfad setzung
 const db = new Database('src/db/botdata.db');
 
+// Hier dann als Test eine Speicherung des letzten Bot startes in der Datenbank
+
 // Verwendung der Discord Intents
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
