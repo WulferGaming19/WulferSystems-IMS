@@ -1,5 +1,5 @@
-import { Client, GatewayIntentBits, Events } from 'discord.js'; // Import der Module aus discord.js
-import dotenv from 'dotenv'; // für die .env Datei
+import { Client, GatewayIntentBits, Events } from 'discord.js'; // Import der Module aus discord.js// für die .env Datei
+import dotenv from 'dotenv-safe';
 
 // laden der .env Datei
 dotenv.config();
