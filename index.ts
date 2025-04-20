@@ -1,14 +1,21 @@
-import { Client, GatewayIntentBits, Events } from 'discord.js';
-import * as dotenv from 'dotenv';
+import { Client, GatewayIntentBits, Events } from 'discord.js'; // Import der Module aus discord.js
+import dotenv from 'dotenv'; // für die .env Datei
 
+// laden der .env Datei
 dotenv.config();
 
+// Verwendung der Discord Intents
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
 });
 
+// Kleiner Check, ob der Bot erfolgreich gestartet ist
 client.once(Events.ClientReady, () => {
-    console.log(`✅ ${client.user?.tag} ist erfolgreich gestartet.`);
-  });
+  console.log(`✅ ${client.user?.tag} ist erfolgreich gestartet.`);
+});
 
-client.login(process.env.DISCORD_TOKEN)
+// Fehlermeldung, wenn kein Token angegeben worden ist oder ein feher auftritt
+// # Recherce für Fehlermeldung erforderlich
+
+// Abfrage und auszug des Bot Tokens aus der .env
+client.login(process.env.DISCORD_TOKEN);
