@@ -1,8 +1,8 @@
 {
   "name": "wulfersystems-ims",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A easy Incident-Management-System builded in TypeScript with discord.js V14",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,9 +11,9 @@
     "url": "git+https://github.com/WulferGaming19/WulferSystems-IMS.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Wulfer Gaming 19 // Stefan-Emilian Kraft",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/WulferGaming19/WulferSystems-IMS/issues"
   },
