@@ -32,4 +32,6 @@ client.once(Events.ClientReady, () => {
 // # Recherce für Fehlermeldung erforderlich
 
 // Abfrage und auszug des Bot Tokens aus der .env
-client.login(process.env.DISCORD_TOKEN);
+client.login(process.env.DISCORD_TOKEN).catch((error) => {
+  console.error('❌ Der Bot konnt sich nicht mit dem Bot Token einloggen');
+});

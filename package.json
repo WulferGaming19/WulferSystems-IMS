@@ -26,6 +26,7 @@
   "homepage": "https://github.com/WulferGaming19/WulferSystems-IMS#readme",
   "dependencies": {
     "better-sqlite3": "^11.9.1",
+    "chalk": "^5.4.1",
     "discord.js": "^14.18.0",
     "dotenv-safe": "^9.1.0"
   },
