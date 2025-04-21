@@ -1,6 +1,7 @@
 import { Client, GatewayIntentBits, Events } from 'discord.js'; // Import der Module aus discord.js// für die .env Datei
 import dotenv from 'dotenv-safe';
 import Database from 'better-sqlite3';
+import { performance } from 'node:perf_hooks';
 
 import { log } from './src/utils/logging.js';
 
@@ -20,6 +21,8 @@ db.prepare(
 `
 ).run();
 
+const startTime = performance.now(); // ⏱ Start
+
 // Verwendung der Discord Intents
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
@@ -28,7 +31,11 @@ const client = new Client({
 // Kleiner Check, ob der Bot erfolgreich gestartet ist
 client.once(Events.ClientReady, async () => {
   log('success', `Erfolgreich eingeloggt als: ${client.user?.tag}`);
-  log('success', `${client.user?.tag} ist erflgreich gestartet!`);
+  log('success', `${client.user?.tag} ist erfolgreich gestartet!`);
+
+  const endTime = performance.now(); // ⏱ Stop
+  const duration = (endTime - startTime).toFixed(2);
+  log('info', `Startzeit: ${duration} ms`); // Info Log
 });
 
 // Fehlermeldung, wenn kein Token angegeben worden ist oder ein feher auftritt
@@ -36,5 +43,7 @@ client.once(Events.ClientReady, async () => {
 
 // Abfrage und auszug des Bot Tokens aus der .env
 client.login(process.env.DISCORD_TOKEN).catch((error) => {
-  log('error', `${client.user?.tag} konnt nicht starten!`);
+  log('error', 'Bot konnte nicht starten!');
+  log('error', `Grund: ${error.message || error}`);
+  process.exit(1);
 });
