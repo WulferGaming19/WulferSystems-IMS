@@ -9,6 +9,12 @@ dotenv.config();
 const db = new Database('src/db/botdata.db');
 
 // Hier dann als Test eine Speicherung des letzten Bot startes in der Datenbank
+db.prepare(`
+  CREATE TABLE IF NOT EXISTS bot_status (
+    id INTEGER PRIMARY KEY,
+    last_start TEXT
+  )
+`);
 
 // Verwendung der Discord Intents
 const client = new Client({
