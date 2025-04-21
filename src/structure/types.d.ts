@@ -6,3 +6,5 @@ declare module 'discord.js' {
     commands: Collection<string, any>;
   }
 }
+
+//  Dies habe ich übernommen // # Nicht selbst geschrieben!
