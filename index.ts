@@ -5,6 +5,7 @@ import { performance } from 'node:perf_hooks';
 
 import { log } from './src/utils/logging.js';
 import { loadCommands } from './src/handlers/commandHandler.js';
+import { handleInteraction } from './src/handlers/interactionHandler.js';
 
 // laden der .env Datei
 dotenv.config();
@@ -14,6 +15,10 @@ const startTime = performance.now(); // ⏱ Start
 // Verwendung der Discord Intents
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
+});
+
+client.on(Events.InteractionCreate, async (interaction) => {
+  await handleInteraction(interaction);
 });
 
 // Kleiner Check, ob der Bot erfolgreich gestartet ist
