@@ -3,17 +3,18 @@ import chalk from 'chalk';
 
 const db = new Database('./data/botdata.db');
 
-// ✅ Tabelle config
+// Tabelle config
 db.prepare(
   `
   CREATE TABLE IF NOT EXISTS config (
     guild_id TEXT PRIMARY KEY,
-    incident_channel_id TEXT NOT NULL
+    incident_channel_id TEXT,
+    log_channel_id TEXT
   )
 `
 ).run();
 
-// ✅ Tabelle für Incidents anlegen
+// Tabelle incidents
 db.prepare(
   `
   CREATE TABLE IF NOT EXISTS incidents (
@@ -23,11 +24,21 @@ db.prepare(
     severity TEXT NOT NULL,
     channelMessageId TEXT,
     created_at TEXT NOT NULL
-  );
+  )
 `
 ).run();
 
-// ✅ Tabelle für BotStatus anlegen
+// Tabelle bot_status
+db.prepare(
+  `
+  CREATE TABLE IF NOT EXISTS bot_status (
+    id INTEGER PRIMARY KEY,
+    last_start TEXT
+  )
+`
+).run();
+
+// ✅ Diese Funktion musst du EXPORTIEREN:
 export function initBotStatus() {
   const now = new Date().toISOString();
 
